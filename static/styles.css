@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Covered%20By%20Your%20Grace:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Akaya%20Kanadaka:wght@400&display=swap");
+body {
+  font-family: "Akaya Kanadaka";
+  margin: 0;
+  padding: 0;
+  background-color: #ffe5ec;
+}
+
+.content {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(201, 24, 74, 0.15);
+  text-align: center;
+}
+.content h1 {
+  color: #c9184a;
+  font-family: "Covered By Your Grace", cursive;
+}
+.content h4 {
+  color: #d1477a;
+}
+.content table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+.content table th, .content table td {
+  padding: 10px;
+  border: 1px solid #ff8fab;
+}
+.content table th {
+  background-color: #fb6f92;
+  color: #fff;
+}
+.content a {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: #fb6f92;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.content a:hover {
+  background-color: #d1477a;
+}
+.content input {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ff8fab;
+  transition: border-color 0.3s ease;
+}
+.content input:focus {
+  border-color: #fb6f92;
+  outline: none;
+}
+.content #btn_add {
+  background-color: #ffc2d1;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.content #btn_add:hover {
+  background-color: #ff8fab;
+}/*# sourceMappingURL=styles.css.map */

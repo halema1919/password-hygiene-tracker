@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered%20By%20Your%20Grace:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya%20Kanadaka:wght@400&display=swap');
+// Color Variables 
+// Color Variables
+$primary_color: #fb6f92;         
+$primary-hover-color: #d1477a;    
+$success-color: #ffc2d1;          
+$success-hover-color: #ff8fab;    
+$title-color: #c9184a;            
+$bg_color: #ffe5ec;               
+
+// 2. FIXED: Changed 'italic' to 'cursive' (italic is not a valid CSS generic font family)
+$font1: 'Covered By Your Grace', cursive; 
+$font2: 'Akaya Kanadaka'; 
+
+body {
+  font-family: $font2;
+  margin: 0;
+  padding: 0;
+  background-color: $bg_color;
+}
+
+.content {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;              // keep content card white so pink accents pop
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(201, 24, 74, 0.15); // soft pink-tinted shadow
+  text-align: center;
+
+  h1 {
+    color: $title-color;
+    font-family: $font1;
+  }
+  h4 {
+    color: $primary-hover-color;
+  }
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 10px;
+      border: 1px solid $success-hover-color;
+    }
+    th {
+      background-color: $primary_color;
+      color: #fff;
+    }
+
+  }
+  a{
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: $primary_color;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $primary-hover-color;
+    }
+
+  }
+  input{
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid $success-hover-color;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: $primary_color;
+      outline: none;
+    }
+  }
+  #btn_add{
+    background-color: $success-color;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $success-hover-color;
+    }
+  }
+}

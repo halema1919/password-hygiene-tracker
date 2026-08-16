@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Password Checker</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Password Strength &amp; Breach Checker</h1>
+    {% if account %}
+    <h4>Checking for: {{ account.name }}</h4>
+    {% endif %}
+
+    <label for="password-input">Enter a password:</label>
+    <input type="password" id="password-input" autocomplete="new-password" />
+    <button id="toggle-visibility" type="button">Show</button>
+
+    <div id="strength-result"></div>
+
+    <button id="check-breach-btn" type="button">Check for Breaches</button>
+    <div id="breach-result"></div>
+
+    <a href="/">Back to Dashboard</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+
+<script>
+const accountId = {{ account.id if account else 'null' }};
+const strengthLabels = ['Weak', 'Weak', 'Fair', 'Strong', 'Excellent'];
+document.getElementById('password-input').addEventListener('input', (e) => {
+    const password = e.target.value;
+    const resultEl = document.getElementById('strength-result');
+
+    if (password.length === 0) {
+        resultEl.textContent = '';
+        return;
+    }
+
+    const result = zxcvbn(password);
+    resultEl.textContent = `Strength: ${strengthLabels[result.score]} (score ${result.score}/4)`;
+});
+
+document.getElementById('toggle-visibility').addEventListener('click', () => {
+    const input = document.getElementById('password-input');
+    const btn = document.getElementById('toggle-visibility');
+    if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+    } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+    }
+});
+
+async function sha1(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+
+document.getElementById('check-breach-btn').addEventListener('click', async () => {
+    const password = document.getElementById('password-input').value;
+    const resultDiv = document.getElementById('breach-result');
+
+    if (!password) {
+        resultDiv.textContent = 'Enter a password first.';
+        return;
+    }
+
+    resultDiv.textContent = 'Checking...';
+
+
+
+    try {
+        const fullHash = await sha1(password);
+        const prefix = fullHash.slice(0, 5);
+        const suffix = fullHash.slice(5);
+        
+        const response = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`);
+        const text = await response.text();
+
+    const lines = text.split('\r\n');
+        let breachCount = 0;
+        for (const line of lines) {
+            const [hashSuffix, count] = line.split(':');
+            if (hashSuffix === suffix) {
+                breachCount = parseInt(count, 10);
+                break;
+            }
+        }
+    if (breachCount > 0) {
+            resultDiv.textContent = `Found in ${breachCount} known breaches — choose a different password.`;
+            resultDiv.className = 'breach-found';
+        } else {
+            resultDiv.textContent = 'Not found in known breaches.';
+            resultDiv.className = 'breach-clear';
+        }
+
+        if (accountId !== null) {
+            await fetch(`/mark-reviewed/${accountId}`, { method: 'POST' });
+        }
+
+    } catch (err) {
+        resultDiv.textContent = 'Error checking breach status — try again.';
+        console.error('Breach check failed:', err.message);
+    }
+});
+</script>
+{% endblock %}
+        
