@@ -32,21 +32,21 @@
                 <td>{{account.last_reviewed.strftime("%Y-%m-%d")}}</td>
                 <td><span class="badge badge-{{account.status}}">{{account.status}}</span></td>
                 <td>
-                    <a href="/checker/{{account.id}}">Check Password</a>
+                    <a href="/checker/{{account.id}}" class="btn btn-primary">Check Password</a>
                     <br/>
                     <form action="/mark-updated/{{account.id}}" method="POST" class="inline-form"
                          onsubmit="return confirm('Mark this account as updated? This will reset the updated and review clocks.');">
-                        <button type="submit" class="link-button">Mark as Updated</button>
+                        <button type="submit" class="btn btn-success">Mark as Updated</button>
                     </form>
                     <br/>
                     <form action ="/dismiss/{{account.id}}" method="POST" class="inline-form"
                          onsubmit="return confirm('Dismiss this reminder? This will reset the review clock without marking password as changed');">
-                        <button type="submit" class="link-button">Dismiss Reminder</button>
+                        <button type="submit" class="btn btn-neutral">Dismiss Reminder</button>
                     </form>
 
-                    <a href="/delete/{{account.id}}">Delete</a>
+                    <a href="/delete/{{account.id}}" class="btn btn-danger">Delete</a>
                     <br/>
-                    <a href="/edit/{{account.id}}">Edit</a>
+                    <a href="/edit/{{account.id}}" class="btn btn-neutral">Edit</a>
                 </td>
             </tr>
             {%endfor%}

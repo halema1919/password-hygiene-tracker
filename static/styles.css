@@ -23,6 +23,24 @@ body {
 .content h4 {
   color: #d1477a;
 }
+.content .badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+}
+.content .badge-ok {
+  background-color: #8fd9a8;
+}
+.content .badge-review-soon {
+  background-color: #ffd166;
+  color: #4a3800;
+}
+.content .badge-review-recommended {
+  background-color: #c9184a;
+}
 .content table {
   width: 100%;
   margin-top: 20px;
@@ -36,18 +54,45 @@ body {
   background-color: #fb6f92;
   color: #fff;
 }
-.content a {
+.content .btn {
   display: inline-block;
   padding: 8px 16px;
   margin: 5px;
   border-radius: 20px;
-  background-color: #fb6f92;
-  color: #fff;
+  border: none;
+  font-family: "Akaya Kanadaka";
+  font-size: 1rem;
+  cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
-.content a:hover {
+.content .btn-primary {
+  background-color: #fb6f92;
+  color: #fff;
+}
+.content .btn-primary:hover {
   background-color: #d1477a;
+}
+.content .btn-success {
+  background-color: #8fd9a8;
+  color: #fff;
+}
+.content .btn-success:hover {
+  filter: brightness(0.9);
+}
+.content .btn-neutral {
+  background-color: #ffc2d1;
+  color: #c9184a;
+}
+.content .btn-neutral:hover {
+  background-color: #ff8fab;
+}
+.content .btn-danger {
+  background-color: #c9184a;
+  color: #fff;
+}
+.content .btn-danger:hover {
+  background-color: rgb(155.44, 18.56, 57.2266666667);
 }
 .content input {
   padding: 8px;

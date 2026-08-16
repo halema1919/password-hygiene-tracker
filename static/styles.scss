@@ -8,6 +8,9 @@ $success-color: #ffc2d1;
 $success-hover-color: #ff8fab;    
 $title-color: #c9184a;            
 $bg_color: #ffe5ec;               
+$status-ok-color: #8fd9a8;
+$status-review-soon-color: #ffd166;
+$status-review-recommended-color: #c9184a;
 
 // 2. FIXED: Changed 'italic' to 'cursive' (italic is not a valid CSS generic font family)
 $font1: 'Covered By Your Grace', cursive; 
@@ -36,6 +39,19 @@ body {
   h4 {
     color: $primary-hover-color;
   }
+
+  .badge {
+   display: inline-block;
+   padding: 4px 12px;
+   border-radius: 12px;
+   font-size: 0.85rem;
+   font-weight: bold;
+   color: #fff;
+}
+  .badge-ok { background-color: $status-ok-color; }
+  .badge-review-soon { background-color: $status-review-soon-color; color: #4a3800; }
+  .badge-review-recommended { background-color: $status-review-recommended-color; }
+
   table {
     width: 100%;
     margin-top: 20px;
@@ -51,21 +67,38 @@ body {
     }
 
   }
-  a{
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 5px;
-    border-radius: 20px;
-    background-color: $primary_color;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: $primary-hover-color;
-    }
-
-  }
+  .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 20px;
+  border: none;
+  font-family: $font2;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.btn-primary {
+  background-color: $primary_color;
+  color: #fff;
+  &:hover { background-color: $primary-hover-color; }
+}
+.btn-success {
+  background-color: $status-ok-color;
+  color: #fff;
+  &:hover { filter: brightness(0.9); }
+}
+.btn-neutral {
+  background-color: $success-color;
+  color: $title-color;
+  &:hover { background-color: $success-hover-color; }
+}
+.btn-danger {
+  background-color: $title-color;
+  color: #fff;
+  &:hover { background-color: darken($title-color, 10%); }
+}
   input{
     padding: 8px;
     margin: 5px;
