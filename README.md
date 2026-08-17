@@ -41,7 +41,7 @@ Design choices making that possible:
 
 When an account review is recorded, the backend receives only the account identifier and the fact that the account was reviewed. No password or password-derived data is included. That event is used solely to update `last_reviewed`.
 
-## Why two timestamps
+## Two timestamps
 
 The original design used a single "last updated" timestamp and an "overdue" badge based on a set rotation interval of 90 days.
 
