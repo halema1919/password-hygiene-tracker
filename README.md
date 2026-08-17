@@ -2,7 +2,7 @@
 
 A full-stack Flask app that helps you keep track of when you last updated the password for each of your accounts, reminds you to periodically review account security, and includes a standalone password strength & breach checker to help you evaluate a current or candidate password.
 
-**No password is ever stored or sent to the backend, including candidate password being tested.**
+**No password is ever stored or sent to the backend, including candidate passwords being tested.**
 
 ## What it does
 
@@ -20,13 +20,12 @@ A full-stack Flask app that helps you keep track of when you last updated the pa
   - Real-time strength scoring as you type, powered by [zxcvbn](https://github.com/dropbox/zxcvbn)
   - Breach checking against [Have I Been Pwned's Pwned Passwords API](https://haveibeenpwned.com/API/v3#PwnedPasswords), using k-anonymity so the full password or hash never leaves the browser
 
-> The checker is intended for evaluating **candidate passwords**, not for entering the current password of an existing account.
 
 ## Why no passwords are stored
 
-This was a deliberate design constraint, not just a feature. The account tracker's database schema has no password field, no password-hash field, and no breach-check history containing password-derived data. The checker is stateless - nothing it processes is written to the database.
+This was feature was a deliberate design constraint. The account tracker's database schema has no password field, no password-hash field, and no breach-check history containing password-derived data. The checker is stateless so that nothing it processes is written to the database.
 
-Two design choices make that possible:
+Design choices making that possible:
 
 1. **The breach check is client-side.**
    The candidate password is hashed with SHA-1 in the browser using the Web Crypto API. Only the **first 5 characters** of that hash are sent to HIBP's Pwned Passwords API.
