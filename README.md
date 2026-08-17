@@ -4,7 +4,7 @@ A full-stack Flask app that helps you keep track of when you last updated the pa
 
 **No password is ever stored or sent to the backend, including candidate passwords being tested.**
 
-## What it does
+## Purpose
 
 - **Account tracker (CRUD):** Add accounts (e.g. "Gmail," "Bank"), view them on a dashboard, edit them, or delete them.
 
