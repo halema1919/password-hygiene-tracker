@@ -2,7 +2,7 @@
 
 A full-stack Flask app that helps you keep track of when you last updated the password for each of your accounts, reminds you to periodically review account security, and includes a standalone password strength & breach checker to help you evaluate a current or candidate password.
 
-**No password is ever stored or sent to this app's backend - not an account's real password and not a candidate password being tested.**
+**No password is ever stored or sent to the backend, including candidate password being tested.**
 
 ## What it does
 
