@@ -21,9 +21,9 @@ A full-stack Flask app that helps you keep track of when you last updated the pa
   - Breach checking against [Have I Been Pwned's Pwned Passwords API](https://haveibeenpwned.com/API/v3#PwnedPasswords), using k-anonymity so the full password or hash never leaves the browser
 
 
-## Why no passwords are stored
+## Password Storage
 
-This was feature was a deliberate design constraint. The account tracker's database schema has no password field, no password-hash field, and no breach-check history containing password-derived data. The checker is stateless so that nothing it processes is written to the database.
+This web app deliberately does not store any passwords. The account tracker's database schema has no password field, no password-hash field, and no breach-check history containing password-derived data. The checker is stateless so that nothing it processes is written to the database.
 
 Design choices making that possible:
 
